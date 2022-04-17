@@ -2,9 +2,9 @@ import java.io.*;
 import java.util.Scanner;
 
 public class HuffmanEncoder {
-    private final String inputFileName = "./WarAndPeace.txt";
-    private final String outputFileName = "./WarAndPeace-compressed.bin";
-    private final String codesFileName = "./WarAndPeace-codes.txt";
+    private final String inputFileName = "./anna.txt";
+    private final String outputFileName = "./anna-compressed.bin";
+    private final String codesFileName = "./anna-codes.txt";
     private BookReader book;
     private MyOrderedList<FrequencyNode> frequencies;
     private HuffmanNode huffmanTree;
@@ -107,7 +107,6 @@ public class HuffmanEncoder {
         }
         long endTime = System.currentTimeMillis();
         System.out.println("Time to count frequencies: " + (endTime - startTime) + "ms");
-        //scanner.close();
     }
 
     /**
