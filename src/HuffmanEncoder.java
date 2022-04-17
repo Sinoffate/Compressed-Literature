@@ -94,27 +94,20 @@ public class HuffmanEncoder {
      * ○ The counts are stored in FrequencyNodes.
      * ○ It should output the time it takes to count the frequencies.
      */
-    private void countFrequencies() {
+    private void countFrequencies() throws IOException {
         long startTime = System.currentTimeMillis();
-        Scanner scanner = new Scanner(book.book);
-        scanner.useDelimiter("");
-        while (scanner.hasNext()) {
-            String word = scanner.next();
-            for (int i = 0; i < word.length(); i++) {
-                Character c = word.charAt(i);
-                if (c != ' ') {
-                    FrequencyNode node = frequencies.binarySearch(new FrequencyNode(c, 0));
-                    if (node == null) {
-                        frequencies.add(new FrequencyNode(c, 1));
-                    } else {
-                        node.count++;
-                    }
-                }
+        char[] text = book.book.toCharArray();
+        for (char c : text) {
+            FrequencyNode node = frequencies.binarySearch(new FrequencyNode(c, 0));
+            if (node == null) {
+                frequencies.add(new FrequencyNode(c, 1));
+            } else {
+                node.count++;
             }
         }
         long endTime = System.currentTimeMillis();
         System.out.println("Time to count frequencies: " + (endTime - startTime) + "ms");
-        scanner.close();
+        //scanner.close();
     }
 
     /**
@@ -157,11 +150,13 @@ public class HuffmanEncoder {
      * ○ When a leaf is reached the code is stored in the codes list.
      */
     private void extractCodes(HuffmanNode root, String code) {
-        if (root.isLeaf()) {
-            codes.add(new CodeNode(root.character, code));
-        } else {
-            extractCodes(root.left, code + "0");
-            extractCodes(root.right, code + "1");
+        if (root != null) {
+            if (root.isLeaf()) {
+                codes.add(new CodeNode(root.character, code));
+            } else {
+                extractCodes(root.left, code + "0");
+                extractCodes(root.right, code + "1");
+            }
         }
     }
 
@@ -176,7 +171,7 @@ public class HuffmanEncoder {
     private void encode() {
         long startTime = System.currentTimeMillis();
         StringBuilder sb = new StringBuilder();
-        for (char c : book.words.toString().toCharArray()) {
+        for (char c : book.book.toCharArray()) {
             for (int j = 0; j < codes.size(); j++) {
                 if (codes.get(j).character == c) {
                     sb.append(codes.get(j).code);
