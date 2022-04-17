@@ -33,7 +33,6 @@ public class BookReader {
         System.out.println("Time to read file: " + (finish - start) + " milliseconds");
         System.out.println("Number of characters in file: " + book.length());
 
-
     }
 
     public void parseWords() { // test file is 25 words
@@ -64,9 +63,5 @@ public class BookReader {
         long finish = System.currentTimeMillis();
         System.out.println("Number of words in file: " + words.size());
         System.out.println("Time to parse words: " + (finish - start) + " milliseconds");
-
-
-
-
     }
 }
