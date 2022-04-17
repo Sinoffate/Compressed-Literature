@@ -3,6 +3,10 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 /.idea/
+test.txt
+WarAndPeace-codes.txt
+WarAndPeace-compressed.bin
+WarAndPeace.txt
 
 ### Eclipse ###
 .apt_generated
