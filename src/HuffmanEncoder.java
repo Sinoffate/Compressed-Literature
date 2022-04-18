@@ -1,20 +1,14 @@
 import java.io.*;
-import java.util.Scanner;
-
 public class HuffmanEncoder {
-    private final String inputFileName = "./anna.txt";
-    private final String outputFileName = "./anna-compressed.bin";
-    private final String codesFileName = "./anna-codes.txt";
+    private String inputFileName = "./WarAndPeace.txt";
+    private String outputFileName = "./WarAndPeace-compressed.bin";
+    private String codesFileName = "./WarAndPeace-codes.txt";
     private BookReader book;
     private MyOrderedList<FrequencyNode> frequencies;
     private HuffmanNode huffmanTree;
     private MyOrderedList<CodeNode> codes;
     private byte[] encodedText;
 
-    /*
-     * HuffmanEncoder - The constructor should call the helper methods in the correct
-     * order to carry out Huffman’s algorithm.
-     */
     public HuffmanEncoder() throws IOException {
         frequencies = new MyOrderedList<>();
         codes = new MyOrderedList<>();
@@ -149,13 +143,11 @@ public class HuffmanEncoder {
      * ○ When a leaf is reached the code is stored in the codes list.
      */
     private void extractCodes(HuffmanNode root, String code) {
-        if (root != null) {
-            if (root.isLeaf()) {
-                codes.add(new CodeNode(root.character, code));
-            } else {
-                extractCodes(root.left, code + "0");
-                extractCodes(root.right, code + "1");
-            }
+        if (root.isLeaf()) {
+            codes.add(new CodeNode(root.character, code));
+        } else {
+            extractCodes(root.left, code + "0");
+            extractCodes(root.right, code + "1");
         }
     }
 
@@ -170,7 +162,8 @@ public class HuffmanEncoder {
     private void encode() {
         long startTime = System.currentTimeMillis();
         StringBuilder sb = new StringBuilder();
-        for (char c : book.book.toCharArray()) {
+        for (int i = 0; i < book.book.length(); i++) {
+            char c = book.book.charAt(i);
             for (int j = 0; j < codes.size(); j++) {
                 if (codes.get(j).character == c) {
                     sb.append(codes.get(j).code);
@@ -214,7 +207,5 @@ public class HuffmanEncoder {
         long endTime = System.currentTimeMillis();
         System.out.println("Writing compressed file... " + encodedText.length +
                            " bytes written in " + (endTime - startTime) + "ms");
-
-
     }
 }

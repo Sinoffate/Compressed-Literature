@@ -1,0 +1,23 @@
+It was in July, 1805, and the speaker was the well-known Anna Pavlovna
+Scherer, maid of honor and favorite of the Empress Marya Fedorovna.
+
+run with c = Character.toLowerCase(c);
+1828668 bytes
+
+run w/o c = Character.toLowerCase(c);
+1869761 bytes
+
+what it should be:
+1875128 bytes
+
+1875421 bytes
+
+
+A  N  N  A  _   H     A  S     _  A  _  B   A  N  A  N  A  _  I     N  _  A  _  B   A  N  D     A  N  A
+11 10 10 11 00  01101 11 01110 00 11 00 010 11 10 11 10 11 00 01111 10 00 11 00 010 11 10 01100 11 10 11
+
+
+11101011000110111011100011000101110111011000111110001100010111001100111011
+11101011000110111011100011000101110111011000111110001100010111001100111011
+11101011 00011011 10111000 11000101 11011101 10001111 10001100 01011100 11001110 11
+-21      27       -72      -59      -35      -113     -116     92       -50      -1
