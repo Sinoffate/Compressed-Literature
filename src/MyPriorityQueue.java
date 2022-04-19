@@ -7,13 +7,21 @@ public class MyPriorityQueue<Type extends Comparable<Type>> {
 
     public void insert(Type value) {
         heap.insert(value, heap.size());
-        bubbleUp();
+        if (heap.size() != 1) {
+            bubbleUp();
+        }
     }
 
     public Type removeMin() {
+        if(heap.isEmpty()){
+            return null;
+        }
         Type min = min();
         heap.set(0, heap.get(heap.size() - 1));
         heap.remove(heap.size() - 1);
+        if(heap.size() <= 1){
+            return min;
+        }
         sinkDown();
         return min;
     }
@@ -73,7 +81,7 @@ public class MyPriorityQueue<Type extends Comparable<Type>> {
     }
 
     private int parent(int index) {
-        return index / 2;
+        return (index - 1) / 2;
     }
 
     private int right(int index) {
