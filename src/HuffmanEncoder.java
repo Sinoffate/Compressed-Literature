@@ -172,6 +172,9 @@ public class HuffmanEncoder {
             }
         }
         String str = sb.toString();
+        if (str.length() % 8 != 0) {
+            str = str + "0".repeat(8 - str.length() % 8);
+        }
         encodedText = new byte[str.length() / 8];
         for (int i = 0; i < encodedText.length; i++) {
             String sub = str.substring(i * 8, i * 8 + 8);
