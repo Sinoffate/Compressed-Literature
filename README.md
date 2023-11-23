@@ -16,7 +16,7 @@ This data structures project implements the Huffman coding algorithm to compress
 
 ## Technologies Used
 - Java
-- Data Structures: Priority Queues, Trees
+- Custom Implemented Data Structures: Array List, Linked List, Ordered ListPriority Queues, Trees
 - Algorithms: Huffman Coding
 - File I/O for reading from and writing to files
 
